@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Node / Three.js / React
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+.DS_Store
+dist/
+build/
+
+# Unity 
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+*.csproj
+*.unityproj
+*.sln
+*.user
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos del sistema
+Thumbs.db
+Desktop.ini
