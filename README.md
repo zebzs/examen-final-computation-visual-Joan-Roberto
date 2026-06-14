@@ -1,19 +1,23 @@
 # Examen Final - Computación Visual 2026-I
 
-**Estudiante:** Joan Sebastian Roberto Puerto
+**Estudiante:** Joan Sebastian Roberto Puerto  
+
+
 **Repositorio:** https://github.com/zebzs/examen-final-computation-visual-Joan-Roberto  
-**Fecha de entrega:** 12/06/2026
+
+
+**Fecha de entrega:** 13/06/2026
+
 
 ## Descripción general
 
 Este repositorio contiene la solución al examen final de Computación Visual. El examen consta de dos ejercicios independientes:
 
-1. **Ejercicio 1 – Procesamiento visual e IA** 
+1. **Ejercicio 1 – Procesamiento visual e IA**  
    Aplicación en Python que carga una imagen (`sudoku.png`), aplica un pipeline de procesamiento que incluye: conversión a escala de grises, transformación a espacio HSV, suavizado Gaussiano, detección de bordes Canny, segmentación mediante umbralización y contornos, y guardado de resultados comparativos. Se generan 11 imágenes de salida que documentan el efecto de cada operación.
 
-2. **Ejercicio 2 – Escena 3D interactiva temática** 
-   Se implementará una escena 3D con Three.js, React Three Fiber o Unity sobre un tema a elegir (exploración espacial, entorno marino, robótica, etc.). Incluirá jerarquías, transformaciones, materiales PBR, iluminación, animaciones e interacción. La evidencia será un GIF o video.
-
+2. **Ejercicio 2 – Escena 3D interactiva temática**  
+   Escena 3D desarrollada con **React Three Fiber** sobre el tema **Exploración espacial** (superficie marciana). Incluye jerarquías de objetos (rover con linterna como hijo, rocas), transformaciones (movimiento con WASD, rotación, escala), materiales PBR (textura de suelo marciano), iluminación coherente (luz solar, ambiente, spotlight en rover), animaciones (flotación y salto del astronauta), interacción entre elementos (astronauta cambia de color, salta y muestra texto al acercarse) e interacción del usuario (teclado para mover el rover, ratón para cámara).
 
 ## Dependencias
 
@@ -24,8 +28,11 @@ Este repositorio contiene la solución al examen final de Computación Visual. E
 
 Las versiones exactas se especifican en `ejercicio_1_procesamiento_visual/requirements.txt`.
 
-### Ejercicio 2 (por definir)
-- Pendiente de selección (Three.js / React Three Fiber / Unity)
+### Ejercicio 2
+- Node.js (v16 o superior)
+- npm o yarn
+- **React Three Fiber** y **Drei** (incluidos en el proyecto)
+- Three.js
 
 ## Instalación
 
@@ -44,8 +51,11 @@ O si se prefiere instalar directamente:
 pip install opencv-python numpy
 ```
 
-### Ejercicio 2
-Se añadirá posteriormente.
+### Instalar dependencias del ejercicio 2
+```bash
+cd ejercicio_2_escena_3d_interactiva
+npm install
+```
 
 ## Ejecución
 
@@ -54,11 +64,15 @@ Se añadirá posteriormente.
 cd ejercicio_1_procesamiento_visual/src
 python main.py
 ```
-
 El script procesará la imagen `../data/sudoku.png` y guardará los resultados en `../resultados/`.
 
 ### Ejercicio 2
-Pendiente de implementación.
+```bash
+cd ejercicio_2_escena_3d_interactiva
+npm run dev
+```
+Abrir `http://localhost:5173` en el navegador.  
+**Controles:** WASD para mover el rover; ratón para orbitar la cámara (pan, zoom, rotación).
 
 ## Estructura del repositorio
 
@@ -85,62 +99,86 @@ examen-final-computation-visual-Joan-Roberto/
 │       ├── 5b_red_segmentation.jpg
 │       ├── 6_contours_detection.jpg
 │       └── 7_comparison_mosaic.jpg
-└── ejercicio_2_escena_3d_interactiva/  # (A crear)
+└── ejercicio_2_escena_3d_interactiva/
+    ├── README.md                      # Documentación detallada del ejercicio 2
+    ├── package.json
+    ├── public/
+    │   ├── models/
+    │   │   ├── Rover.glb
+    │   │   ├── Astronauta.glb
+    │   │   └── linterna1.glb
+    │   └── textures/
+    │       └── red/
+    │           └── red_laterite_soil_stones_diff_4k.jpg
     ├── src/
-    └── media/
+    │   ├── App.jsx                    # Código completo de la escena 3D
+    │   ├── main.jsx
+    │   └── index.css
+    └── media/                         # Evidencias visuales
+        ├── captura_1.png
+        ├── captura_2.png
+        └── demo.gif
 ```
 
 ## Evidencias
 
+### Ejercicio 1
+
 A continuación se muestran las imágenes más representativas del procesamiento realizado. Para una descripción detallada de cada una, consultar `ejercicio_1_procesamiento_visual/README.md`.
 
-### Imagen original
+#### Imagen original
 ![Imagen original](ejercicio_1_procesamiento_visual/data/sudoku.png)
 
-### Mosaico comparativo (Original, Grises, Hue, Suavizado, Bordes, Umbral)
+#### Mosaico comparativo (Original, Grises, Hue, Suavizado, Bordes, Umbral)
 ![Mosaico comparativo](ejercicio_1_procesamiento_visual/resultados/7_comparison_mosaic.jpg)
 
-### Detección de bordes (Canny)
+#### Detección de bordes (Canny)
 ![Bordes Canny](ejercicio_1_procesamiento_visual/resultados/4_canny_edges.jpg)
 
-### Detección de contornos
+#### Detección de contornos
 ![Contornos](ejercicio_1_procesamiento_visual/resultados/6_contours_detection.jpg)
 
-### Segmentación por umbral
+#### Segmentación por umbral
 ![Umbralización](ejercicio_1_procesamiento_visual/resultados/5_threshold_binary.jpg)
 
-Todas las imágenes generadas están disponibles en la carpeta `resultados/`.
+### Ejercicio 2
+
+#### Vista general de la escena
+![Vista general](ejercicio_2_escena_3d_interactiva/media/captura_1.png)
+
+#### Primer plano del rover con la linterna activada
+![Primer plano linterna](ejercicio_2_escena_3d_interactiva/media/captura_2.png)
+
+#### Demostración en movimiento (GIF)
+![GIF animado](ejercicio_2_escena_3d_interactiva/media/demo.gif)  
+*El GIF muestra navegación de cámara, movimiento del rover con WASD, la linterna iluminando el suelo, y la reacción del astronauta al acercarse: salto, cambio de color y texto “🚀 ¡HOLA!”.*
 
 ## Análisis técnico
 
-### Parámetros clave del ejercicio 1
+### Ejercicio 1
 - **Kernel Gaussiano:** (5,5) con sigma 1.5 – suavizado moderado que preserva bordes.
 - **Umbrales Canny:** 50 (inferior) y 150 (superior) – relación 1:3 estándar para capturar bordes débiles y fuertes en la cuadrícula del sudoku.
 - **Umbral de binarización:** 127 – punto medio de la escala 0-255, separa números oscuros del fondo claro.
 - **Segmentación HSV rojo:** rangos (0-10) y (170-180) – ejemplo de segmentación por color.
 
-Estos valores se eligieron experimentalmente para obtener resultados claros y comparables en la imagen de prueba.
-
-### Decisiones de diseño
-- Se utilizó OpenCV por su eficiencia y completitud.
-- Se guardaron resultados intermedios para permitir la trazabilidad del procesamiento.
-- El mosaico comparativo facilita la evaluación visual conjunta.
-
-### Posibles mejoras
-- Aplicar el pipeline a un video en tiempo real.
-- Usar un modelo preentrenado (YOLO, SSD) para detección de objetos más compleja.
+### Ejercicio 2
+- **Jerarquía:** `group` rover → `group` linterna (con modelo 3D, spotlight, cono visual, halo). Rocas dentro de un `group` padre.
+- **Transformaciones:** Traslación (WASD), rotación (hacia la dirección de movimiento), escala (rover 0.8, linterna 0.25, astronauta 8, rocas 0.2–0.7).
+- **Cámara interactiva:** `OrbitControls` con pan, zoom y rotación.
+- **Materiales PBR:** Suelo con textura difusa, roughness y metalness; modelos GLB con sus propios materiales; linterna con materiales emisivos y transparentes.
+- **Iluminación:** AmbientLight, DirectionalLight (simula sol), PointLight (relleno), Spotlight (linterna del rover), Environment nocturno (`preset="night" background={true}`).
+- **Animaciones:** Astronauta flota (`Math.sin`) y ejecuta salto parabólico al acercarse el rover; rover se desplaza continuamente.
+- **Interacción entre elementos:** Distancia < 3.5 → astronauta cambia a naranja brillante, salta y muestra texto.
+- **Interacción del usuario:** Teclado (WASD) para mover el rover; ratón para control de cámara.
 
 ## Uso de IA
 
-Durante el desarrollo del ejercicio 1 se emplearon herramientas de inteligencia artificial de forma auxiliar para tareas concretas:
+Durante el desarrollo de ambos ejercicios se emplearon herramientas de inteligencia artificial de forma auxiliar para tareas concretas:
 
-- **Segmentación por color en HSV:** Se consultó un ejemplo de rangos HSV para rojo.
-- **Creación del mosaico comparativo:** Se pidió orientación sobre cómo combinar imágenes con `np.hstack` y `np.vstack`.
-- **Manejo de rutas relativas:** Se solicitó la forma de obtener rutas absolutas con `os.path.dirname(__file__)`.
+- **Ejercicio 1:** Consulta de rangos HSV para segmentación de rojo, combinación de imágenes con `np.hstack`, manejo de rutas relativas con `os.path.dirname`.
+- **Ejercicio 2:** Orientación de cono de luz (linterna), implementación del salto parabólico del astronauta, configuración de cielo envolvente con `Environment preset="night"`.
 
-*Para más detalles, ver sección "Uso de IA" en `ejercicio_1_procesamiento_visual/README.md`.*
+Todo el código fue revisado, ajustado manualmente y validado visualmente. No se utilizaron modelos preentrenados para segmentación en el ejercicio 1, ni generación automática del pipeline completo.
 
+*Para más detalles, consultar los README específicos de cada ejercicio.*
 
-## Contribuciones
-
-Trabajo individual. Joan Roberto – 100% del desarrollo y documentación.
